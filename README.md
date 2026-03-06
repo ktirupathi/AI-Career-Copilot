@@ -91,3 +91,36 @@ This executes a basic smoke test that boots the server and checks key API routes
 
 - If OpenAI credentials are not configured, the app still works using deterministic local AI heuristics.
 - This is desktop-first and includes responsive fallback for narrower screens.
+
+## Resolving PR conflicts (including PR #2)
+
+If GitHub shows merge conflicts for your PR, resolve them locally with this workflow:
+
+1. Ensure you have the target branch and your feature branch locally.
+2. Run the helper script:
+
+```bash
+scripts/resolve_pr2_conflicts.sh main work
+```
+
+3. If conflicts are reported, open each conflicted file and resolve markers (`<<<<<<<`, `=======`, `>>>>>>>`).
+4. Verify no markers remain:
+
+```bash
+rg -n '^<<<<<<<|^=======|^>>>>>>>'
+```
+
+5. Stage and commit:
+
+```bash
+git add .
+git commit -m "Resolve conflicts with main for PR #2"
+```
+
+6. Push branch updates:
+
+```bash
+git push
+```
+
+> Note: In restricted environments where GitHub fetch is blocked, the script still helps with local branch conflict resolution once both branches are available locally.
