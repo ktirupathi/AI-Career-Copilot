@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Career Copilot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar glass">
+        <div class="brand">
+          <div class="brand-icon">AI</div>
+          <div>
+            <h1>AI Career Copilot</h1>
+            <p>Career Intelligence</p>
+          </div>
+        </div>
+
+        <nav class="nav-links">
+          <button class="nav-link active" data-screen="landing">Landing Page</button>
+          <button class="nav-link" data-screen="dashboard">User Dashboard</button>
+          <button class="nav-link" data-screen="resume">Resume Upload</button>
+          <button class="nav-link" data-screen="jd-analyzer">Job Description Analyzer</button>
+          <button class="nav-link" data-screen="skill-gap">Skill Gap Report</button>
+          <button class="nav-link" data-screen="interview-prep">Interview Preparation</button>
+          <button class="nav-link" data-screen="mock-interview">Mock Interview Simulator</button>
+          <button class="nav-link" data-screen="roadmap">Career Roadmap</button>
+          <button class="nav-link" data-screen="daily-tasks">Daily Tasks</button>
+        </nav>
+      </aside>
+
+      <main class="content-area">
+        <section class="screen active" id="landing">
+          <header class="hero glass">
+            <div>
+              <p class="eyebrow">Next generation career growth</p>
+              <h2>Build your best tech career with AI guidance</h2>
+              <p>
+                AI Career Copilot helps engineers and tech professionals optimize resumes,
+                bridge skill gaps, and prepare for interviews with a personalized daily plan.
+              </p>
+              <div class="cta-row">
+                <button class="primary" id="refreshDashboardBtn">Refresh Live Insights</button>
+                <button class="secondary">View Demo</button>
+              </div>
+            </div>
+            <div class="hero-metrics">
+              <article class="metric-card">
+                <h3>Career Score</h3>
+                <div class="score-ring" id="landingCareerScore" style="--value: 78">78%</div>
+                <p>Personalized by AI + activity data</p>
+              </article>
+              <article class="metric-card">
+                <h3>Interview Readiness</h3>
+                <div class="big-number" id="landingInterviewReadiness">81%</div>
+                <p id="landingTaskStats">Tasks loading...</p>
+              </article>
+            </div>
+          </header>
+
+          <div class="grid three">
+            <article class="card glass">
+              <h3>Resume Analysis</h3>
+              <p>ATS score, keyword coverage, and recruiter impact in seconds.</p>
+              <div class="progress"><span id="landingResumeBar" style="width: 72%"></span></div>
+              <small id="landingResumeLabel">72% complete</small>
+            </article>
+            <article class="card glass">
+              <h3>Skill Gap Insights</h3>
+              <p>Compare your profile with target roles and market requirements.</p>
+              <div class="progress"><span id="landingSkillBar" style="width: 58%"></span></div>
+              <small id="landingSkillLabel">Loading from database...</small>
+            </article>
+            <article class="card glass">
+              <h3>Roadmap Progress</h3>
+              <p>Track milestones across learning, networking, and interview prep.</p>
+              <div class="progress"><span id="landingRoadmapBar" style="width: 64%"></span></div>
+              <small id="landingRoadmapLabel">64% towards Senior SWE goal</small>
+            </article>
+          </div>
+        </section>
+
+        <section class="screen" id="dashboard">
+          <h2>User Dashboard</h2>
+          <div class="grid two">
+            <article class="card glass">
+              <h3>Career Score</h3>
+              <div class="score-row">
+                <div class="score-ring" id="dashboardCareerScore" style="--value: 81">81%</div>
+                <ul>
+                  <li>Resume strength: <span id="resumeStrength">74%</span></li>
+                  <li>Skill alignment: <span id="skillAlignment">68%</span></li>
+                  <li>Interview readiness: <span id="interviewReadiness">81%</span></li>
+                </ul>
+              </div>
+            </article>
+            <article class="card glass">
+              <h3>Upcoming Interview Practice</h3>
+              <ul class="timeline" id="practiceList"></ul>
+            </article>
+          </div>
+
+          <div class="grid three">
+            <article class="card glass">
+              <h3>Resume Analysis</h3>
+              <div class="chart-bars">
+                <div><span id="barKeywords" style="height: 68%"></span><small>Keywords</small></div>
+                <div><span id="barImpact" style="height: 88%"></span><small>Impact</small></div>
+                <div><span id="barFormat" style="height: 75%"></span><small>Format</small></div>
+                <div><span id="barAts" style="height: 62%"></span><small>ATS</small></div>
+              </div>
+            </article>
+            <article class="card glass">
+              <h3>Skill Gap Insights</h3>
+              <p>Top missing skills from database:</p>
+              <ul class="tag-list" id="skillGapTags"></ul>
+            </article>
+            <article class="card glass">
+              <h3>Roadmap Progress</h3>
+              <p>Q3 Goal completion</p>
+              <div class="progress large"><span id="dashboardRoadmapBar" style="width: 67%"></span></div>
+              <small id="dashboardRoadmapLabel">8/12 milestones completed</small>
+            </article>
+          </div>
+        </section>
+
+        <section class="screen" id="resume">
+          <h2>Resume Upload Page</h2>
+          <article class="card glass">
+            <h3>Paste resume text for AI analysis</h3>
+            <input id="resumeFileName" placeholder="File name (e.g. resume-2026.txt)" />
+            <textarea id="resumeText" rows="8" placeholder="Paste your resume text"></textarea>
+            <button class="primary" id="analyzeResumeBtn">Analyze Resume</button>
+            <p id="resumeResult">No analysis yet.</p>
+          </article>
+        </section>
+
+        <section class="screen" id="jd-analyzer">
+          <h2>Job Description Analyzer</h2>
+          <div class="grid two">
+            <article class="card glass">
+              <h3>Target role</h3>
+              <input id="jobTitle" value="Senior Backend Engineer" />
+              <textarea id="jobDescriptionText" rows="8" placeholder="Paste job description here..."></textarea>
+              <textarea id="jobResumeText" rows="6" placeholder="Paste resume text to compare"></textarea>
+              <button class="primary" id="analyzeJdBtn">Analyze with AI</button>
+            </article>
+            <article class="card glass">
+              <h3>Match score</h3>
+              <div class="big-number" id="jobMatchScore">--%</div>
+              <ul class="timeline" id="jobMissingSkills"></ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="screen" id="skill-gap">
+          <h2>Skill Gap Report</h2>
+          <div class="grid three" id="skillGapCards"></div>
+        </section>
+
+        <section class="screen" id="interview-prep">
+          <h2>Interview Preparation</h2>
+          <div class="grid two">
+            <article class="card glass">
+              <h3>Practice tracks</h3>
+              <ul class="timeline">
+                <li><strong>Behavioral storytelling</strong><span>12 prompts</span></li>
+                <li><strong>System design</strong><span>8 architecture drills</span></li>
+                <li><strong>Coding interview</strong><span>AI reviewer</span></li>
+              </ul>
+            </article>
+            <article class="card glass">
+              <h3>Weekly readiness trend</h3>
+              <svg viewBox="0 0 280 120" class="line-chart" aria-label="readiness chart">
+                <polyline points="0,95 40,88 80,72 120,70 160,56 200,44 240,36 280,22" />
+              </svg>
+            </article>
+          </div>
+        </section>
+
+        <section class="screen" id="mock-interview">
+          <h2>Mock Interview Simulator</h2>
+          <div class="grid two">
+            <article class="card glass">
+              <h3>Session setup</h3>
+              <label>Role <input id="mockRole" value="Senior Software Engineer" /></label>
+              <label>Focus <input id="mockFocus" value="System Design + Behavioral" /></label>
+              <button class="primary" id="startMockBtn">Start AI Interview</button>
+            </article>
+            <article class="card glass">
+              <h3>Live score preview</h3>
+              <div class="big-number" id="mockScore">8.2/10</div>
+              <p id="mockFeedback">Communication, depth, and confidence indicators update in real-time.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="screen" id="roadmap">
+          <h2>Career Roadmap</h2>
+          <article class="card glass">
+            <h3>Senior Engineer in 6 months</h3>
+            <div class="milestones">
+              <div class="done">Month 1: Resume + Portfolio Revamp</div>
+              <div class="done">Month 2: Core skill uplift</div>
+              <div class="current">Month 3: Leadership projects</div>
+              <div>Month 4: Interview prep sprint</div>
+              <div>Month 5: Applications + referrals</div>
+              <div>Month 6: Final interview loops</div>
+            </div>
+          </article>
+        </section>
+
+        <section class="screen" id="daily-tasks">
+          <h2>Daily Tasks</h2>
+          <div class="grid two">
+            <article class="card glass">
+              <h3>Today</h3>
+              <div class="task-controls">
+                <input id="newTaskTitle" placeholder="New task" />
+                <button class="primary" id="addTaskBtn">Add task</button>
+              </div>
+              <ul class="checklist" id="taskList"></ul>
+            </article>
+            <article class="card glass">
+              <h3>Streak + Productivity</h3>
+              <div class="big-number">14 day streak 🔥</div>
+              <div class="progress"><span id="taskCompletionBar" style="width: 70%"></span></div>
+              <small id="taskCompletionLabel">70% weekly task completion</small>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
